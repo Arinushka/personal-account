@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formTitle {
+  margin-bottom: 20px;
+}
+
+.input:global(.ant-input-affix-wrapper){
+  position: relative;
+}
+
+.input :global(.ant-input-suffix) {
+  position: absolute;
+  right: 5px;
+  top: 2px
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 500px;
+}
+
+
+.input :global(.ant-input) {
+  width: 100%;
+}
+
+.input:global(.ant-input) {
+  width: 100%;
+}
+
+.formItem :global(.ant-form-item-required) {
+  display: flex;
+}
+
+.button {
+  margin-top: 20px;
+}

@@ -1,0 +1,26 @@
+{
+  "signupUsers": [
+    {
+      "login": "tom",
+      "password": "tom125"
+    },
+    {
+      "login": "mary",
+      "password": "mary52781"
+    },
+    {
+      "login": "admin",
+      "password": "admin654"
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Mary",
+      "phone": "8-(321)-455-44-33"
+    },
+    {
+      "name": "Boris",
+      "phone": "8-(320)-238-21-89"
+    }
+  ]
+}
