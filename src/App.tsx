@@ -18,10 +18,10 @@ const App: React.FC = () => {
 
       <BrowserRouter>
         <Routes>
-          <Route path='/signin' element={<Auth setLoggedIn={setLoggedIn} />} />
-          <Route element={<ProtectedRoute isAuth={loggedIn} />}>
+          {/* <Route path='/signin' element={<Auth setLoggedIn={setLoggedIn} />} />
+          <Route element={<ProtectedRoute isAuth={loggedIn} />}> */}
             <Route path='/' element={<ContactList />} />
-          </Route>
+          {/* </Route> */}
 
           <Route path="*" element={<p>There's nothing here: 404!</p>} />
         </Routes>
