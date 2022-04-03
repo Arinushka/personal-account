@@ -1,1 +1,1 @@
-# personal-accoun
+# personal-account
