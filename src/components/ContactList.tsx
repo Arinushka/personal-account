@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api/contacts'
 import { List, Button, Input } from 'antd';
-import {DeleteOutlined, EditOutlined,PlusOutlined} from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from './contactList.module.css';
+import { useDispatch, connect } from 'react-redux';
+import { ActionType } from '../store/actionTypes';
+import { AppState } from '../store/reducers';
 
-const ContactList: React.FC = (props) => {
+interface ContactListsProps {
+  contacts: []
+}
 
+const ContactList: React.FC<ContactListsProps> = (props) => {
+
+  const { contacts } = props;
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-
-
+  const dispatch = useDispatch()
   const { Search } = Input;
+
   const getData = () => {
     api.get(`/contacts`)
       .then((res) => {
-        setData(res.data);
+        dispatch({
+          type: ActionType.GET_CONTACTS,
+          payload: res.data
+        })
+
       })
       .catch((err) => {
         console.log(err)
@@ -29,11 +41,11 @@ const ContactList: React.FC = (props) => {
     <List
       header={<div className={styles.headerList}>
         <h2>Список контактов:</h2>
-        <Button className={styles.button} icon={<PlusOutlined  />} ></Button>
-        <Search placeholder="Введите имя для поиска" className={styles.input}/>
-        </div>}
+        <Button className={styles.button} icon={<PlusOutlined />} ></Button>
+        <Search placeholder="Введите имя для поиска" className={styles.input} />
+      </div>}
       className={styles.list}
-      dataSource={data}
+      dataSource={contacts}
       renderItem={(item: { name: string, avatar: string, email: string, phone: string }) => (
         <List.Item key={item.name}>
           <List.Item.Meta
@@ -51,4 +63,8 @@ const ContactList: React.FC = (props) => {
   )
 }
 
-export default ContactList;
+export default connect((state: AppState) => {
+  return {
+    contacts: state.contacts
+  };
+})(ContactList);

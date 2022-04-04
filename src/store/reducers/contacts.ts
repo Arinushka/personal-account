@@ -1,8 +1,10 @@
-const initialState: any = [];
+import { Action, ActionType } from "../actionTypes";
 
-const contacts = function (state: any = initialState, action: { type: string, payload: [] }) {
+const initialState: [] = [];
+
+const contacts = function (state: [] = initialState, action: Action<ActionType, []>) {
   switch (action.type) {
-    case "GET_CONTACTS":
+    case ActionType.GET_CONTACTS:
       return action.payload
     default:
       return state
