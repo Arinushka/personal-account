@@ -41,7 +41,7 @@ const Main: React.FC = () => {
   const searchContact = (value: any) => {
     api.get(`/contacts`)
       .then((res) => {
-        const findContacts = res.data.filter((x: any) => x.name.toLowerCase().includes(value))
+        const findContacts = res.data.filter((x: any) => x.name.toLowerCase().includes(value.toLowerCase()))
         dispatch(loaded(findContacts))
       })
       .catch((err) => {
