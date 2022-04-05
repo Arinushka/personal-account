@@ -20,21 +20,19 @@ const ContactList: React.FC<ContactListsProps> = (props) => {
   const { Search } = Input;
 
   return (
-    <>
-
+    <div className={styles.wrap}>
+      <div className={styles.wrapperTitle}><h2 className={styles.title}>Список контактов:</h2><div className={styles.headerList}>
+        <Button className={styles.buttonAdd} htmlType="button" onClick={showModal}>Добавить контакт <PlusOutlined /></Button>
+        <Search placeholder="Введите имя для поиска" className={styles.input} onChange={changeValueInput} onSearch={(value: any) => searchContact(value)} />
+      </div></div>
       <List
-        header={<div><h2 className={styles.title}>Список контактов:</h2><div className={styles.headerList}>
-          <Button className={styles.buttonAdd} htmlType="button" onClick={showModal}>Добавить контакт <PlusOutlined /></Button>
-          <Search placeholder="Введите имя для поиска" className={styles.input} onChange={changeValueInput} onSearch={(value: any) => searchContact(value)} />
-        </div></div>}
         className={styles.list}
         dataSource={contacts.data}
         renderItem={(item: Contact) => (
           <List.Item key={item.id}>
             <List.Item.Meta
               title={item.name}
-              description={item.email}
-            />
+              description={item.email} />
             <div>
               <Button className={styles.button} htmlType="button" icon={<EditOutlined />}></Button>
               <Button className={styles.button} htmlType="button" type="text" icon={<DeleteOutlined />} onClick={() => handleDelete(item.id)}></Button>
@@ -42,7 +40,7 @@ const ContactList: React.FC<ContactListsProps> = (props) => {
           </List.Item>
         )}
       />
-    </>
+    </div>
   )
 }
 

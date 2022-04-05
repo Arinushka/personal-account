@@ -61,8 +61,9 @@ const Main: React.FC = () => {
     setIsModalVisible(false);
   };
 
-  const handleCancel = () => {
+  const handleCancel = (action: any) => {
     setIsModalVisible(false);
+    action()
   };
 
   const getData = () => {

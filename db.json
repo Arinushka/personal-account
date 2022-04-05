@@ -37,6 +37,21 @@
       "name": "Ivan",
       "email": "ivan@mail.ru",
       "id": 6
+    },
+    {
+      "name": "Спанч Боб",
+      "email": "spangeBob@inbox.ru",
+      "id": 7
+    },
+    {
+      "name": "Жак-Ив Кусто",
+      "email": "test4444@mail.ru",
+      "id": 8
+    },
+    {
+      "name": "Жак-Ив Кусто",
+      "email": "test4444@mail.ru",
+      "id": 9
     }
   ]
 }
