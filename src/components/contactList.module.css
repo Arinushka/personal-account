@@ -84,12 +84,10 @@
   border-radius: 10px;
   padding-left: 5px;
   color:rgba(64, 103, 191, .9);
+  outline: none;
 }
 
 .input ::-webkit-input-placeholder {
   color:rgba(64, 103, 191, .6);
 }
 
-.input:focus {
-  border: 1px solid rgba(64, 103, 191, .3);
-}

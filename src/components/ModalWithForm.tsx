@@ -14,7 +14,7 @@ const ModalWithForm: React.FC<ModalWithFormProps> = (props) => {
   console.log(isVisible)
 
   return (
-    <Modal title="Basic Modal" width="50%" visible={isVisible} onOk={handleOk} onCancel={handleCancel}>
+    <Modal title="Basic Modal"  visible={isVisible} onOk={handleOk} onCancel={handleCancel}>
       <p>Some contents...</p>
       <p>Some contents...</p>
       <p>Some contents...</p>
