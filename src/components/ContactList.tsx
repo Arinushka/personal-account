@@ -4,28 +4,30 @@ import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from './contactList.module.css';
 import { connect } from 'react-redux';
 import { AppState } from '../store/reducers';
+import { Contact } from '../store/reducers/contacts/types';
 
 interface ContactListsProps {
-  contacts: [],
+  contacts: {data: Contact[]},
+  handleDelete: any;
   showModal: () => void;
 }
 
 const ContactList: React.FC<ContactListsProps> = (props) => {
 
-  const { contacts, showModal } = props;
+  const { contacts, showModal, handleDelete } = props;
   const { Search } = Input;
 
   return (
     <>
+    
       <List
-        header={<div className={styles.headerList}>
-          <h2>Список контактов:</h2>
-          <Button className={styles.button} icon={<PlusOutlined />} htmlType="button" onClick={showModal}></Button>
+        header={<div><h2 className={styles.title}>Список контактов:</h2><div className={styles.headerList}>
+          <Button className={styles.buttonAdd} htmlType="button" onClick={showModal}>Добавить контакт <PlusOutlined /></Button>
           <Search placeholder="Введите имя для поиска" className={styles.input} />
-        </div>}
+        </div></div>}
         className={styles.list}
-        dataSource={contacts}
-        renderItem={(item: { name: string, avatar: string, email: string, phone: string, id: number }) => (
+        dataSource={contacts.data}
+        renderItem={(item: Contact) => (
           <List.Item key={item.id}>
             <List.Item.Meta
               title={item.name}
@@ -33,7 +35,7 @@ const ContactList: React.FC<ContactListsProps> = (props) => {
             />
             <div>
               <Button className={styles.button} htmlType="button" icon={<EditOutlined />}></Button>
-              <Button className={styles.button} htmlType="button" type="text" icon={<DeleteOutlined />}></Button>
+              <Button className={styles.button} htmlType="button" type="text" icon={<DeleteOutlined />} onClick={()=>handleDelete(item.id)}></Button>
             </div>
           </List.Item>
         )}

@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 import contacts from "./contacts/reducer";
+import { Contact } from "./contacts/types";
 
 export interface AppState {
-  contacts: [];
+  contacts:  {data: Contact[]};
 }
 
 const allReducers = combineReducers({

@@ -5,7 +5,7 @@ import ContactList from './ContactList';
 import { useDispatch } from 'react-redux';
 
 import ModalWithForm from './ModalWithForm';
-import { loaded } from '../store/reducers/contacts/actions';
+import { addContact, deleteContact, loaded } from '../store/reducers/contacts/actions';
 
 
 const Main: React.FC = () => {
@@ -20,14 +20,25 @@ const Main: React.FC = () => {
 
   const addNewContact = (data: any) => {
     api.post(`/contacts`, data)
-    .then((res)=>{
-      console.log(res)
-    })
-  
+      .then((res) => {
+        dispatch(addContact(res.data))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
-  const handleOk = (action:any) => {
-    console.log(action)
+  const handleDelete = (id: any) => {
+    api.delete(`/contacts/${id}`)
+      .then(() => {
+        dispatch(deleteContact(id))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const handleOk = (action: any) => {
     addNewContact(action)
     setIsModalVisible(false);
   };
@@ -40,7 +51,6 @@ const Main: React.FC = () => {
     api.get(`/contacts`)
       .then((res) => {
         dispatch(loaded(res.data))
-
       })
       .catch((err) => {
         console.log(err)
@@ -53,9 +63,9 @@ const Main: React.FC = () => {
 
   return (
     <>
-      <ContactList showModal={showModal} />
-      <ModalWithForm  isVisible={isModalVisible} handleCancel={handleCancel} handleOk={handleOk}/>
-   
+      <ContactList showModal={showModal} handleDelete={handleDelete} />
+      <ModalWithForm isVisible={isModalVisible} handleCancel={handleCancel} handleOk={handleOk} />
+
     </>
   )
 }

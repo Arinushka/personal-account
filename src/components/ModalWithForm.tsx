@@ -17,8 +17,11 @@ const ModalWithForm: React.FC<ModalWithFormProps> = (props) => {
   return (
     <Modal title="Basic Modal" visible={isVisible} onOk={()=>handleOk(form.getFieldsValue())} onCancel={handleCancel}>
       <Form form={form}>
-        <Form.Item name="name">
-          <Input></Input>
+        <Form.Item name="name" label="Имя">
+          <Input placeholder='Введите имя'></Input>
+        </Form.Item>
+        <Form.Item name="email"  label="Почта">
+          <Input  placeholder='Введите почту'></Input>
         </Form.Item>
       </Form>
     </Modal>
