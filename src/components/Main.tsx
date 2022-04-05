@@ -9,7 +9,7 @@ import ModalWithForm from './ModalWithForm';
 
 const Main: React.FC = () => {
 
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const dispatch = useDispatch()
 
