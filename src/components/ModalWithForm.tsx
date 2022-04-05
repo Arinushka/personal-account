@@ -1,23 +1,26 @@
 import React from 'react';
-import { Modal } from 'antd';
+import { Form, Input, Modal } from 'antd';
+import { useForm } from 'antd/lib/form/Form';
 
 interface ModalWithFormProps {
   isVisible: boolean;
   handleCancel: () => void;
-  handleOk: () => void;
+  handleOk: (action: any) => void;
 }
 
 const ModalWithForm: React.FC<ModalWithFormProps> = (props) => {
 
   const { isVisible, handleCancel, handleOk } = props;
 
-  console.log(isVisible)
+  const [form] = useForm()
 
   return (
-    <Modal title="Basic Modal"  visible={isVisible} onOk={handleOk} onCancel={handleCancel}>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+    <Modal title="Basic Modal" visible={isVisible} onOk={()=>handleOk(form.getFieldsValue())} onCancel={handleCancel}>
+      <Form form={form}>
+        <Form.Item name="name">
+          <Input></Input>
+        </Form.Item>
+      </Form>
     </Modal>
   )
 }

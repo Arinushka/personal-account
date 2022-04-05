@@ -1,4 +1,4 @@
-
+import 'antd/dist/antd.css'
 import './App.css';
 import React, {  useState } from 'react';
 import Auth from './components/Auth';

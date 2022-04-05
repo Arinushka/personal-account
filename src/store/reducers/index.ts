@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import contacts from "./contacts";
+import contacts from "./contacts/reducer";
 
 export interface AppState {
   contacts: [];

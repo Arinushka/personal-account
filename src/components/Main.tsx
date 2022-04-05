@@ -3,8 +3,9 @@ import api from '../api/contacts'
 import ContactList from './ContactList';
 
 import { useDispatch } from 'react-redux';
-import { ActionType } from '../store/actionTypes';
+
 import ModalWithForm from './ModalWithForm';
+import { loaded } from '../store/reducers/contacts/actions';
 
 
 const Main: React.FC = () => {
@@ -17,7 +18,17 @@ const Main: React.FC = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const addNewContact = (data: any) => {
+    api.post(`/contacts`, data)
+    .then((res)=>{
+      console.log(res)
+    })
+  
+  }
+
+  const handleOk = (action:any) => {
+    console.log(action)
+    addNewContact(action)
     setIsModalVisible(false);
   };
 
@@ -28,10 +39,7 @@ const Main: React.FC = () => {
   const getData = () => {
     api.get(`/contacts`)
       .then((res) => {
-        dispatch({
-          type: ActionType.GET_CONTACTS,
-          payload: res.data
-        })
+        dispatch(loaded(res.data))
 
       })
       .catch((err) => {
