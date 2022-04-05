@@ -38,6 +38,24 @@ const Main: React.FC = () => {
       })
   }
 
+  const searchContact = (value: any) => {
+    api.get(`/contacts`)
+      .then((res) => {
+        const findContacts = res.data.filter((x: any) => x.name.toLowerCase().includes(value))
+        dispatch(loaded(findContacts))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+
+  const changeValueInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value === '') {
+      getData();
+    }
+  }
+
   const handleOk = (action: any) => {
     addNewContact(action)
     setIsModalVisible(false);
@@ -63,7 +81,7 @@ const Main: React.FC = () => {
 
   return (
     <>
-      <ContactList showModal={showModal} handleDelete={handleDelete} />
+      <ContactList showModal={showModal} handleDelete={handleDelete} searchContact={searchContact} changeValueInput={changeValueInput} />
       <ModalWithForm isVisible={isModalVisible} handleCancel={handleCancel} handleOk={handleOk} />
 
     </>

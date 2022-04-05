@@ -7,23 +7,25 @@ import { AppState } from '../store/reducers';
 import { Contact } from '../store/reducers/contacts/types';
 
 interface ContactListsProps {
-  contacts: {data: Contact[]},
+  contacts: { data: Contact[] },
   handleDelete: any;
   showModal: () => void;
+  searchContact: any;
+  changeValueInput: any;
 }
 
 const ContactList: React.FC<ContactListsProps> = (props) => {
 
-  const { contacts, showModal, handleDelete } = props;
+  const { contacts, showModal, handleDelete, searchContact, changeValueInput } = props;
   const { Search } = Input;
 
   return (
     <>
-    
+
       <List
         header={<div><h2 className={styles.title}>Список контактов:</h2><div className={styles.headerList}>
           <Button className={styles.buttonAdd} htmlType="button" onClick={showModal}>Добавить контакт <PlusOutlined /></Button>
-          <Search placeholder="Введите имя для поиска" className={styles.input} />
+          <Search placeholder="Введите имя для поиска" className={styles.input} onChange={changeValueInput} onSearch={(value: any) => searchContact(value)} />
         </div></div>}
         className={styles.list}
         dataSource={contacts.data}
@@ -35,7 +37,7 @@ const ContactList: React.FC<ContactListsProps> = (props) => {
             />
             <div>
               <Button className={styles.button} htmlType="button" icon={<EditOutlined />}></Button>
-              <Button className={styles.button} htmlType="button" type="text" icon={<DeleteOutlined />} onClick={()=>handleDelete(item.id)}></Button>
+              <Button className={styles.button} htmlType="button" type="text" icon={<DeleteOutlined />} onClick={() => handleDelete(item.id)}></Button>
             </div>
           </List.Item>
         )}
