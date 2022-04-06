@@ -1,10 +1,10 @@
 import 'antd/dist/antd.css'
 import './App.css';
 import React, {  useState } from 'react';
-import Auth from './components/Auth';
+import Auth from '../auth/Auth';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import ProtectedRoute from './components/ProtectedRoute';
-import Main from './components/Main';
+import ProtectedRoute from '../ptotectedRoute/ProtectedRoute';
+import Main from '../main/Main';
 
 
 

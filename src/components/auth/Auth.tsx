@@ -2,7 +2,7 @@ import React, {  useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import styles from './auth.module.css';
-import api from '../api/contacts'
+import api from '../../api/contacts'
 import { useNavigate } from 'react-router-dom';
 
 

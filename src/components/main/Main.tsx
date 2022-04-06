@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import api from '../api/contacts'
-import ContactList from './ContactList';
+import api from '../../api/contacts'
+import ContactList from '../contactList/ContactList';
 import { useForm } from 'antd/lib/form/Form';
 import { connect, useDispatch } from 'react-redux';
-import ModalWithForm from './ModalWithForm';
-import { addContact, deleteContact, loaded } from '../store/reducers/contacts/actions';
-import { Contact } from '../store/reducers/contacts/types';
-import { AppState } from '../store/reducers';
+import ModalWithForm from '../modalWithForm/ModalWithForm';
+import { addContact, deleteContact, loaded } from '../../store/reducers/contacts/actions';
+import { Contact } from '../../store/reducers/contacts/types';
+import { AppState } from '../../store/reducers';
 
 interface MainProps {
   contacts: { data: Contact[] }

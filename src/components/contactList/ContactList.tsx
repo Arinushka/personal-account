@@ -3,8 +3,8 @@ import { List, Button, Input, Avatar } from 'antd';
 import { DeleteOutlined, EditOutlined, PlusSquareOutlined, UserOutlined } from '@ant-design/icons';
 import styles from './contactList.module.css';
 import { connect } from 'react-redux';
-import { AppState } from '../store/reducers';
-import { Contact } from '../store/reducers/contacts/types';
+import { AppState } from '../../store/reducers';
+import { Contact } from '../../store/reducers/contacts/types';
 
 interface ContactListsProps {
   contacts: { data: Contact[] },
