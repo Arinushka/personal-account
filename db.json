@@ -15,43 +15,46 @@
   ],
   "contacts": [
     {
+      "avatar": "https://cdn.pixabay.com/photo/2014/04/02/10/50/girl-304740_1280.png",
       "name": "Mary",
-      "avatar": "",
-      "email": "mary@inbox.ru",
       "phone": "8-(321)-455-44-33",
+      "email": "mary@inbox.ru",
       "id": 0
     },
     {
-      "name": "Boris",
-      "avatar": "https://sc01.alicdn.com/kf/HTB1nxHobQfb_uJkSmLyq6AxoXXaz/200129169/HTB1nxHobQfb_uJkSmLyq6AxoXXaz.jpg",
+      "name": "Borisik",
+      "avatar": "https://webstockreview.net/images/clipart-apple-face-11.png",
       "email": "boris@mail.ru",
       "phone": "8-(320)-238-21-89",
-      "id": 3
+      "id": 1
     },
     {
       "name": "Margo",
       "email": "margo@mail.ru",
-      "id": 5
+      "avatar": "https://w7.pngwing.com/pngs/86/774/png-transparent-girl-face-head-brown-hair-glasses-ponytails-happy-lady-miling.png",
+      "phone": "8-(542)-421-75-43",
+      "id": 2
     },
     {
       "name": "Ivan",
       "email": "ivan@mail.ru",
-      "id": 6
+      "avatar": "https://cdn.pixabay.com/photo/2014/03/25/15/23/boy-296681_1280.png",
+      "phone": "8-(876)-653-98-27",
+      "id": 3
     },
     {
       "name": "Спанч Боб",
       "email": "spangeBob@inbox.ru",
-      "id": 7
+      "avatar": "https://slovnet.ru/wp-content/uploads/2018/11/14-35.jpg",
+      "phone": "8-(976)-540-32-33",
+      "id": 4
     },
     {
       "name": "Жак-Ив Кусто",
       "email": "test4444@mail.ru",
-      "id": 8
-    },
-    {
-      "name": "Жак-Ив Кусто",
-      "email": "test4444@mail.ru",
-      "id": 9
+      "avatar": "https://media.baamboozle.com/uploads/images/450850/1634463548_138423_url.png",
+      "phone": "8-(753)-887-12-12",
+      "id": 5
     }
   ]
 }

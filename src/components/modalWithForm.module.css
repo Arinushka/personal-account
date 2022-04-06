@@ -1,0 +1,67 @@
+.modal :global(.ant-modal-content) {
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 5%);
+  border: 1px solid rgba(64, 103, 191, .3) !important;
+  border-radius: 10px;
+}
+
+.modal :global(.ant-modal-body) {
+  padding: 5px 18px 5px 18px;
+}
+
+.modal :global(.ant-modal-header) {
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.modal :global(.ant-modal-footer){
+  display: flex;
+  justify-content: center;
+}
+
+.modal :global(.ant-modal-title), .formElement :global(.ant-form-item-label>label) {
+  color: rgba(64, 103, 191, .9);
+}
+
+.formElement:global(.ant-form-item ) {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+
+}
+
+.formElement :global(.ant-form-item-label) {
+  align-self: flex-start;
+}
+
+.input {
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 5%);
+  border: 1px solid rgba(64, 103, 191, .3);
+  height: 30px;
+  border-radius: 10px !important;
+  padding-left: 5px;
+  color: rgba(64, 103, 191, .9);
+  outline: none;
+}
+
+.input:hover {
+  border: 1px solid rgba(64, 103, 191, .3);
+}
+
+.button {
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 5%);
+  border: 1px solid rgba(64, 103, 191, .3);
+  border-radius: 5px !important;
+  color: #fff;
+  background-color:  rgba(64, 103, 191, .9);
+  font-weight: 600;
+  width: 70%;
+}
+
+.button:hover,
+.button:focus {
+  border: 1px solid rgba(64, 103, 191, .3);
+  color: #fff;
+  background-color:  rgba(64, 103, 191, .9);
+}
+
+
