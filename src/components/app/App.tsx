@@ -1,7 +1,7 @@
 import 'antd/dist/antd.css'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Auth from '../auth/Auth';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoute from '../ptotectedRoute/ProtectedRoute';
 import Main from '../main/Main';
 import styles from './app.module.css'
@@ -12,6 +12,10 @@ const App: React.FC = (): JSX.Element => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState<string>('');
 
+  useEffect(() => {
+    loggedIn ? <Navigate to="/" /> : <Navigate to="/signin" />
+  }, [])
+
   return (
     <div className={styles.app}>
       <BrowserRouter>
@@ -21,7 +25,7 @@ const App: React.FC = (): JSX.Element => {
             <Route path='/' element={<UserContext.Provider value={userInfo}><Main /></UserContext.Provider>} />
           </Route>
           <Route>
-        </Route>
+          </Route>
           <Route path="*" element={<p className={styles.pageError}>Страница не найдена :(</p>} />
         </Routes>
       </BrowserRouter>
