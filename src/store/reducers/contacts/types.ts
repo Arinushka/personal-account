@@ -1,15 +1,9 @@
+import { Contact } from "../../../types/commonTypes";
+
 export const CONTACT_LOADED = 'CONTACT_LOADED';
 export const CONTACT_ADD = 'CONTACT_ADD';
 export const CONTACT_EDIT = 'CONTACT_EDIT';
 export const CONTACT_DELETE = 'CONTACT_DELETE';
-
-export type Contact = {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  avatar: string;
-};
 
 interface ILoaded {
   type: typeof CONTACT_LOADED;
@@ -28,7 +22,7 @@ interface IAddContact {
 interface IDeleteContact {
   type: typeof CONTACT_DELETE;
   payload: {
-    id: number;
+    id: number | null;
   };
 }
 

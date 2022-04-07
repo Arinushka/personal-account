@@ -1,18 +1,18 @@
 import React from 'react';
-import { Form, Input, Modal, Button } from 'antd';
+import { Form, Input, Modal, Button, FormInstance } from 'antd';
 
 import styles from './modalWithForm.module.css';
 import { MaskedInput } from 'antd-mask-input';
 
 interface ModalWithFormProps {
   isVisible: boolean;
-  handleCancel: (action: any) => void;
-  handleSubmit: (action: any) => void;
+  handleCancel: () => void;
+  handleSubmit: () => void;
   title: string;
-  form: any;
+  form: FormInstance;
 }
 
-const ModalWithForm: React.FC<ModalWithFormProps> = (props) => {
+const ModalWithForm: React.FC<ModalWithFormProps> = (props): JSX.Element => {
 
   const { isVisible, handleCancel, handleSubmit, title, form } = props;
 

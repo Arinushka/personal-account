@@ -46,6 +46,12 @@
       "phone": "8-(976)-543-45-67",
       "email": "helen@inbox.ru",
       "id": 7
+    },
+    {
+      "name": "Лиза",
+      "phone": "8-(990)-796-43-22",
+      "email": "elize@maiil.ru",
+      "id": 8
     }
   ]
 }

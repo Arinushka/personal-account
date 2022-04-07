@@ -12,7 +12,7 @@ const contacts: Reducer<IContactsState, ActionType> = (state = initialState, act
     case CONTACT_DELETE:
       return { ...state, data: state.data.filter((x) => x.id !== action.payload.id) }
     case CONTACT_ADD:
-      return { ...state, data: [...state.data, action.payload.contact] }
+      return { ...state, data: [action.payload.contact, ...state.data] }
     default:
       return state;
   }

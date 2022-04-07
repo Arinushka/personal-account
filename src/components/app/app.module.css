@@ -5,3 +5,9 @@
   width: 100vw;
   height: 100vh;
 }
+
+.pageError {
+  margin-top: 80px;
+  font-weight: 800px;
+  font-size: 30px;
+}

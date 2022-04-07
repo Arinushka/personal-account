@@ -13,16 +13,17 @@
   border-radius: 10px;
 }
 
-.modal :global(.ant-modal-footer){
+.modal :global(.ant-modal-footer) {
   display: flex;
   justify-content: center;
 }
 
-.modal :global(.ant-modal-title), .formElement :global(.ant-form-item-label>label) {
+.modal :global(.ant-modal-title),
+.formElement :global(.ant-form-item-label>label) {
   color: rgba(64, 103, 191, .9);
 }
 
-.formElement:global(.ant-form-item ) {
+.formElement:global(.ant-form-item) {
   display: flex;
   flex-direction: column;
   margin-bottom: 5px;
@@ -52,7 +53,7 @@
   border: 1px solid rgba(64, 103, 191, .3);
   border-radius: 5px !important;
   color: #fff;
-  background-color:  rgba(64, 103, 191, .9);
+  background-color: rgba(64, 103, 191, .9);
   font-weight: 600;
   width: 70%;
 }
@@ -61,7 +62,5 @@
 .button:focus {
   border: 1px solid rgba(64, 103, 191, .3);
   color: #fff;
-  background-color:  rgba(64, 103, 191, .9);
+  background-color: rgba(64, 103, 191, .9);
 }
-
-

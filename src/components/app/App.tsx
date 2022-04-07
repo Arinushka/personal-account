@@ -8,23 +8,20 @@ import styles from './app.module.css'
 import { UserContext } from '../context/UserContext';
 
 
-const App: React.FC = () => {
+const App: React.FC = (): JSX.Element => {
 
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [userInfo, setUserInfo] = useState()
-
+  const [userInfo, setUserInfo] = useState<string>('');
 
   return (
     <div className={styles.app}>
-
       <BrowserRouter>
         <Routes>
-          <Route path='/signin' element={<Auth setLoggedIn={setLoggedIn} setUserInfo={setUserInfo}/>} />
+          <Route path='/signin' element={<Auth setLoggedIn={setLoggedIn} setUserInfo={setUserInfo} />} />
           <Route element={<ProtectedRoute isAuth={loggedIn} />}>
-            <Route path='/' element={<UserContext.Provider value={userInfo}><Main />  </UserContext.Provider>} />
+            <Route path='/' element={<UserContext.Provider value={userInfo}><Main /></UserContext.Provider>} />
           </Route>
-
-          <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          <Route path="*" element={<p className={styles.pageError}>Страница не найдена :(</p>} />
         </Routes>
       </BrowserRouter>
     </div>

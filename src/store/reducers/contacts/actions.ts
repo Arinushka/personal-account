@@ -1,4 +1,5 @@
-import { ActionType, CONTACT_LOADED, CONTACT_ADD, CONTACT_DELETE, Contact } from "./types";
+import { Contact } from "../../../types/commonTypes";
+import { ActionType, CONTACT_LOADED, CONTACT_ADD, CONTACT_DELETE } from "./types";
 
 export function loaded(data: Contact[]): ActionType {
   return {
@@ -9,7 +10,7 @@ export function loaded(data: Contact[]): ActionType {
   }
 }
 
-export function deleteContact(id:number): ActionType {
+export function deleteContact(id: number | null): ActionType {
   return {
     type: CONTACT_DELETE,
     payload: {

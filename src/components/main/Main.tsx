@@ -5,119 +5,122 @@ import { useForm } from 'antd/lib/form/Form';
 import { connect, useDispatch } from 'react-redux';
 import ModalWithForm from '../modalWithForm/ModalWithForm';
 import { addContact, deleteContact, loaded } from '../../store/reducers/contacts/actions';
-import { Contact } from '../../store/reducers/contacts/types';
 import { AppState } from '../../store/reducers';
-import { notification,  } from 'antd';
+import { notification, } from 'antd';
+import { Contact, UserEdit, UserResponse, UsersResponse, ValidationError } from '../../types/commonTypes';
+import { ValidateErrorEntity } from 'rc-field-form/lib/interface';
+
 
 interface MainProps {
   contacts: { data: Contact[] }
 }
 
-const Main: React.FC<MainProps> = (props) => {
+const Main: React.FC<MainProps> = (props): JSX.Element => {
 
-  const [isModalAddVisible, setIsModalAddVisible] = useState(false);
-  const [isModalEditVisible, setIsModalEditVisible] = useState(false);
-  const [item, setItem] = useState<any>();
+  const [isModalAddVisible, setIsModalAddVisible] = useState<boolean>(false);
+  const [isModalEditVisible, setIsModalEditVisible] = useState<boolean>(false);
+  const [item, setItem] = useState<Contact>({ id: null, name: '', avatar: '', phone: '', email: '' });
   const [formEditContact] = useForm();
   const [formAddContact] = useForm();
   const dispatch = useDispatch();
   const { contacts } = props;
 
-  const showModalForAdd = () => {
+  const showModalForAdd = (): void => {
     setIsModalAddVisible(true);
     formAddContact.resetFields()
   };
 
-  const showModalForEdit = (item: Contact) => {
+  const showModalForEdit = (item: Contact): void => {
     formEditContact.setFieldsValue(item)
     setItem(item)
     setIsModalEditVisible(true)
   }
 
-  const addNewContact = (data: Contact) => {
+  const addNewContact = (data: Contact): void => {
     api.post(`/contacts`, data)
-      .then((res) => {
+      .then((res: UserResponse) => {
         dispatch(addContact(res.data));
       })
-      .catch((err) => {
+      .catch((err: string) => {
         console.log(err);
       })
   }
 
-  const handleDelete = (id: any) => {
+  const handleDelete = (id: number | null): void => {
     api.delete(`/contacts/${id}`)
       .then(() => {
         dispatch(deleteContact(id));
       })
-      .catch((err) => {
+      .catch((err: string) => {
         console.log(err);
       })
   }
 
-  const searchContact = (value: any) => {
+  const searchContact = (value: string): void => {
     api.get(`/contacts`)
-      .then((res) => {
-        const findContacts = res.data.filter((x: any) => x.name.toLowerCase().includes(value.toLowerCase()));
+      .then((res: UsersResponse) => {
+        const findContacts = res.data.filter((x: Contact) => x.name.toLowerCase().includes(value.toLowerCase()));
         dispatch(loaded(findContacts));
       })
-      .catch((err) => {
+      .catch((err: string) => {
         console.log(err);
       })
   }
 
-  const handleEdit = (value: any) => {
-    api.patch(`/contacts/${item.id}`, value)
-      .then((res) => {
-        const index = contacts.data.indexOf(item)
-        contacts.data.splice(index, 1, res.data)
-        dispatch(loaded(contacts.data));
+  const handleEdit = (value: UserEdit): void => {
+    api.patch(`/contacts/${item?.id}`, value)
+      .then((res: UserResponse) => {
+        if (item) {
+          const index = contacts.data.indexOf(item)
+          contacts.data.splice(index, 1, res.data)
+          dispatch(loaded(contacts.data));
+        }
       })
-      .catch((err) => {
+      .catch((err: string) => {
         console.log(err);
       })
   }
 
 
-  const changeValueInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const changeValueInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.value === '') {
       getData();
     }
   }
 
-  const successCallback = () => {
+  const successCallback = (): void => {
     addNewContact(formAddContact.getFieldsValue());
     setIsModalAddVisible(false);
     formAddContact.resetFields();
   }
 
-  const failureCallback = (error:any) => {
+  const failureCallback = (error: ValidateErrorEntity): void => {
     notification.error({
-      description: error.errorFields.map((error:any) =>  error.errors),
+      description: error.errorFields.map((error: ValidationError) => error.errors),
       message: "Заполните все обязательные поля формы"
     })
   }
 
-  const handleSubmitAddContact = () => {
-    console.log()
-    formAddContact.validateFields().then(successCallback, error=>failureCallback(error))
+  const handleSubmitAddContact = (): void => {
+    formAddContact.validateFields().then(successCallback, error => failureCallback(error))
   };
 
-  const handleSubmitEditContact = () => {
+  const handleSubmitEditContact = (): void => {
     handleEdit(formEditContact.getFieldsValue())
     setIsModalEditVisible(false);
   }
 
-  const handleCancel = () => {
+  const handleCancel = (): void => {
     setIsModalAddVisible(false);
     setIsModalEditVisible(false);
   };
 
-  const getData = () => {
+  const getData = (): void => {
     api.get(`/contacts`)
-      .then((res) => {
+      .then((res: UsersResponse) => {
         dispatch(loaded(res.data));
       })
-      .catch((err) => {
+      .catch((err: string) => {
         console.log(err);
       })
   }

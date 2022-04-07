@@ -24,7 +24,7 @@
   border: 1px solid rgba(64, 103, 191, .3);
 }
 
-.input:global(.ant-input-affix-wrapper){
+.input:global(.ant-input-affix-wrapper) {
   position: relative;
 }
 
@@ -59,7 +59,7 @@
   border: 1px solid rgba(64, 103, 191, .3);
   border-radius: 5px !important;
   color: #fff;
-  background-color:rgb(68, 103, 171);
+  background-color: rgb(68, 103, 171);
   font-weight: 600;
   width: 70%;
   margin-top: 20px;
@@ -69,5 +69,5 @@
 .button:focus {
   border: 1px solid rgba(64, 103, 191, .3);
   color: #fff;
-  background-color:  rgb(68, 103, 171);
+  background-color: rgb(68, 103, 171);
 }

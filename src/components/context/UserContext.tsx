@@ -1,3 +1,3 @@
 import React from 'react'; 
 
-export const UserContext:any = React.createContext(null); 
+export const UserContext = React.createContext('' as string); 

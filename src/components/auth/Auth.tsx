@@ -4,15 +4,15 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import styles from './auth.module.css';
 import api from '../../api/contacts'
 import { useNavigate } from 'react-router-dom';
-
+import { AuthResponse } from '../../types/commonTypes';
 
 
 interface AuthProps {
-  setLoggedIn(boolean: boolean): void;
-  setUserInfo: any;
+  setLoggedIn: (boolean: boolean) => void;
+  setUserInfo: (value: string) => void;
 }
 
-const Auth: React.FC<AuthProps> = (props) => {
+const Auth: React.FC<AuthProps> = (props): JSX.Element => {
 
   const { setLoggedIn, setUserInfo } = props;
   const [login, setLogin] = useState<string>('');
@@ -20,26 +20,25 @@ const Auth: React.FC<AuthProps> = (props) => {
   const navigate = useNavigate();
 
 
-  const signIn = () => {
+  const signIn = (): void => {
     api.get(`/signupUsers?login=${login}&password=${password}`)
-      .then((res) => {
+      .then((res: AuthResponse) => {
         if (res.data.length === 1) {
           setLoggedIn(true)
           navigate('/')
           setUserInfo(res.data[0].login)
         }
       })
-      .catch((err) => {
+      .catch((err: string) => {
         console.log(err)
       })
   }
 
-
-  const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLogin = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setLogin(event.target.value)
   }
 
-  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setPassword(event.target.value)
   }
 

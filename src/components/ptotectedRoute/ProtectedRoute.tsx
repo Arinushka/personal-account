@@ -5,7 +5,7 @@ interface ProtectedRouteProps {
   isAuth: boolean;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = (props) => {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = (props): JSX.Element => {
 
   return props.isAuth ? <Outlet /> : <Navigate to="/signin" />
 }
