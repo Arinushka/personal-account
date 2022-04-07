@@ -7,7 +7,6 @@ import Main from '../main/Main';
 import styles from './app.module.css'
 import { UserContext } from '../context/UserContext';
 
-
 const App: React.FC = (): JSX.Element => {
 
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
@@ -21,6 +20,8 @@ const App: React.FC = (): JSX.Element => {
           <Route element={<ProtectedRoute isAuth={loggedIn} />}>
             <Route path='/' element={<UserContext.Provider value={userInfo}><Main /></UserContext.Provider>} />
           </Route>
+          <Route>
+        </Route>
           <Route path="*" element={<p className={styles.pageError}>Страница не найдена :(</p>} />
         </Routes>
       </BrowserRouter>
