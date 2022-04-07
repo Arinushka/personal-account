@@ -6,17 +6,18 @@ import api from '../../api/contacts'
 import { useNavigate } from 'react-router-dom';
 
 
+
 interface AuthProps {
   setLoggedIn(boolean: boolean): void;
+  setUserInfo: any;
 }
 
 const Auth: React.FC<AuthProps> = (props) => {
 
-  const { setLoggedIn } = props
+  const { setLoggedIn, setUserInfo } = props;
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
 
   const signIn = () => {
@@ -25,6 +26,7 @@ const Auth: React.FC<AuthProps> = (props) => {
         if (res.data.length === 1) {
           setLoggedIn(true)
           navigate('/')
+          setUserInfo(res.data[0].login)
         }
       })
       .catch((err) => {

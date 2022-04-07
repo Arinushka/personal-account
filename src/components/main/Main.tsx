@@ -7,25 +7,25 @@ import ModalWithForm from '../modalWithForm/ModalWithForm';
 import { addContact, deleteContact, loaded } from '../../store/reducers/contacts/actions';
 import { Contact } from '../../store/reducers/contacts/types';
 import { AppState } from '../../store/reducers';
+import { notification,  } from 'antd';
 
 interface MainProps {
   contacts: { data: Contact[] }
 }
 
-
-
-const Main: React.FC<MainProps> = ({ contacts }) => {
+const Main: React.FC<MainProps> = (props) => {
 
   const [isModalAddVisible, setIsModalAddVisible] = useState(false);
   const [isModalEditVisible, setIsModalEditVisible] = useState(false);
   const [item, setItem] = useState<any>();
   const [formEditContact] = useForm();
   const [formAddContact] = useForm();
+  const dispatch = useDispatch();
+  const { contacts } = props;
 
-  const dispatch = useDispatch()
-
-  const showModal = () => {
+  const showModalForAdd = () => {
     setIsModalAddVisible(true);
+    formAddContact.resetFields()
   };
 
   const showModalForEdit = (item: Contact) => {
@@ -84,10 +84,22 @@ const Main: React.FC<MainProps> = ({ contacts }) => {
     }
   }
 
-  const handleSubmitAddContact = () => {
+  const successCallback = () => {
     addNewContact(formAddContact.getFieldsValue());
     setIsModalAddVisible(false);
     formAddContact.resetFields();
+  }
+
+  const failureCallback = (error:any) => {
+    notification.error({
+      description: error.errorFields.map((error:any) =>  error.errors),
+      message: "Заполните все обязательные поля формы"
+    })
+  }
+
+  const handleSubmitAddContact = () => {
+    console.log()
+    formAddContact.validateFields().then(successCallback, error=>failureCallback(error))
   };
 
   const handleSubmitEditContact = () => {
@@ -95,10 +107,9 @@ const Main: React.FC<MainProps> = ({ contacts }) => {
     setIsModalEditVisible(false);
   }
 
-  const handleCancel = (action: any) => {
+  const handleCancel = () => {
     setIsModalAddVisible(false);
     setIsModalEditVisible(false);
-    action();
   };
 
   const getData = () => {
@@ -117,9 +128,9 @@ const Main: React.FC<MainProps> = ({ contacts }) => {
 
   return (
     <>
-      <ContactList showModal={showModal} showModalForEdit={showModalForEdit} handleDelete={handleDelete} searchContact={searchContact} changeValueInput={changeValueInput} />
-      <ModalWithForm form={formAddContact} title="Новый контакт" isVisible={isModalAddVisible} handleCancel={handleCancel} handleSubmitAddContact={handleSubmitAddContact} />
-      <ModalWithForm form={formEditContact} title="Редактирование контакта" isVisible={isModalEditVisible} handleCancel={handleCancel} handleSubmitAddContact={handleSubmitEditContact} />
+      <ContactList showModalForAdd={showModalForAdd} showModalForEdit={showModalForEdit} handleDelete={handleDelete} searchContact={searchContact} changeValueInput={changeValueInput} />
+      <ModalWithForm form={formAddContact} title="Новый контакт" isVisible={isModalAddVisible} handleCancel={handleCancel} handleSubmit={handleSubmitAddContact} />
+      <ModalWithForm form={formEditContact} title="Редактирование контакта" isVisible={isModalEditVisible} handleCancel={handleCancel} handleSubmit={handleSubmitEditContact} />
     </>
   )
 }

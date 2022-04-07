@@ -126,6 +126,8 @@
 
 .wrapperTitle {
   margin-bottom: 20px;
+  font-weight: 500;
+  color: rgba(64, 103, 191, .9);
 }
 
 .wrapperInfo {
