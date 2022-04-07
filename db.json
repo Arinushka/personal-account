@@ -29,19 +29,6 @@
       "id": 4
     },
     {
-      "name": "eva",
-      "phone": "8-(998)-768-76-57",
-      "email": "eva@mail.ru",
-      "id": 5
-    },
-    {
-      "avatar": "ddd",
-      "name": "Tom",
-      "phone": "8-(998)-765-48-76",
-      "email": "tom@mail.ru",
-      "id": 6
-    },
-    {
       "name": "Helen",
       "phone": "8-(976)-543-45-67",
       "email": "helen@inbox.ru",
@@ -52,6 +39,27 @@
       "phone": "8-(990)-796-43-22",
       "email": "elize@maiil.ru",
       "id": 8
+    },
+    {
+      "avatar": "https://img2.freepng.ru/20180604/zc/kisspng-drawing-child-clip-art-boy-crying-5b15dc695fa810.7182016115281593373918.jpg",
+      "name": "Пётр",
+      "phone": "8-(998)-765-43-56",
+      "email": "tetris@mail.ru",
+      "id": 9
+    },
+    {
+      "avatar": "https://flyclipart.com/thumb2/cartoon-woman-face-group-with-items-477587.png",
+      "name": "Мария",
+      "phone": "8-(998)-765-45-67",
+      "email": "mari@mail.ru",
+      "id": 10
+    },
+    {
+      "avatar": "https://w7.pngwing.com/pngs/969/372/png-transparent-moustache-man-brown-hair-cartoon-man-face-child-face-head.png",
+      "name": "Олег",
+      "phone": "8-(956)-789-53-24",
+      "email": "oleg4444@yandex.ru",
+      "id": 11
     }
   ]
 }
